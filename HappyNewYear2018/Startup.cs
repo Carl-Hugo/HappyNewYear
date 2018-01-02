@@ -15,6 +15,11 @@ namespace HappyNewYear2018
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddSomeCoolFeature()
+                //.AddSingleton<IYearStrategy, Strategy2017>()
+                .AddSingleton<IYearStrategy, Strategy2018>()
+                ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,6 +34,29 @@ namespace HappyNewYear2018
             {
                 await context.Response.WriteAsync("Hello World!");
             });
+        }
+    }
+
+    public interface IYearStrategy
+    {
+
+    }
+
+    public class Strategy2017 : IYearStrategy
+    {
+
+    }
+
+    public class Strategy2018 : IYearStrategy
+    {
+
+    }
+
+    public static class MyClass
+    {
+        public static IServiceCollection AddSomeCoolFeature(this IServiceCollection services)
+        {
+            return services;
         }
     }
 }
