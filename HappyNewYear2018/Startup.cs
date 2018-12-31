@@ -18,8 +18,10 @@ namespace HappyNewYear2018
             services
                 .AddSomeCoolFeature()
                 //.AddSingleton<IYearStrategy, Strategy2017>()
-                .AddSingleton<IYearStrategy, Strategy2018>()
+                //.AddSingleton<IYearStrategy, Strategy2018>()
+                .AddSingleton<IYearStrategy, Strategy2019>()
                 ;
+            // ...
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,11 @@ namespace HappyNewYear2018
     }
 
     public class Strategy2018 : IYearStrategy
+    {
+
+    }
+
+    public class Strategy2019 : IYearStrategy
     {
 
     }
