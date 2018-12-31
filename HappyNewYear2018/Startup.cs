@@ -25,7 +25,7 @@ namespace HappyNewYear2018
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IYearStrategy yearStrategy)
         {
             if (env.IsDevelopment())
             {
@@ -34,30 +34,21 @@ namespace HappyNewYear2018
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync($"Strategy: {yearStrategy?.GetType().Name}");
             });
         }
     }
 
     public interface IYearStrategy
     {
-
+        // Do something, not important in this case
     }
 
-    public class Strategy2017 : IYearStrategy
-    {
+    public class Strategy2017 : IYearStrategy { }
 
-    }
+    public class Strategy2018 : IYearStrategy { }
 
-    public class Strategy2018 : IYearStrategy
-    {
-
-    }
-
-    public class Strategy2019 : IYearStrategy
-    {
-
-    }
+    public class Strategy2019 : IYearStrategy { }
 
     public static class MyClass
     {
